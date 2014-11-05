@@ -28,4 +28,6 @@ If you get something like “v0.10.20”, it was successful<br />
     $ npm -v
 
 If you get something like “1.3.11”, it was successful.<br />
-4. Get your circuit ready (-pic.circuit) and link your arduino to computer.
+4. Get your circuit ready (-pic.circuit) and link your arduino to computer.<br />
+![alt tag](http://devices4inquiry.aisencc.com/wp-content/uploads/sites/6/2014/11/web-ard.png)<br />
+5. Download this repo.

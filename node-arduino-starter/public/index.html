@@ -39,54 +39,13 @@
 			var socket = io.connect('http://149.31.205.105:9001');
 
 			//Turn on/off led  
-			var isOn = false;
-			$('#toggleLED').click(function() {
-				if(isOn == false) {
-					isOn = true;
-					$(this).css({
-						background: 'yellow'
-					});
-					// send signal
-					console.log('led is on');
-					socket.emit('led', true);
-
-				} else if(isOn == true) {
-					isOn = false;
-					$(this).css({
-						background: 'white'
-					});
-					console.log('led is off');
-					// send signal
-					socket.emit('led', false);
-				}
-			});
+			
 
 			//use button linked with arduino to control the web page
-			socket.on('ardButton', function(data){
-				console.log('ardButton value'+ data);
-				
-				if(data==1){
-					$('#ardButton').animate({
-						'height':'50px'
-					},50)
-
-				}else if(data==0){
-					$('#ardButton').animate({
-						'height':'100px'
-					},50)
-
-				}
-
-			});
+			
 
 			//use potentiometer linked with arduino to control the web page
-			socket.on('pot', function(data){
-				console.log('Pot value'+ data);
-				$('#pot').animate({
-					'width':data
-				},50);
 
-			});
 
 			
 

@@ -23,7 +23,6 @@ server.listen(port, function() {
 
 // Routing
 app.use(express.static(__dirname + '/public'));
-
 console.log('the server is running on port: ' + port);
 
 
@@ -35,27 +34,6 @@ io.sockets.on('connection', function(socket) {
 	console.log('Ooooooh, someone just poked me :)-----> SOCKET IO IS WORKING');
 
 	//Websocket get data from web client
-	socket.on('led', function(data) {
-
-		console.log(data);
-
-		var ledOn = new Buffer(1),
-			ledOff = new Buffer(1);
-
-		ledOn[0] = 0x01;
-		ledOff[0] = 0x00;
-
-		if (data === true) {
-			// turn on led
-			arduino.write(ledOn); //send data to arduino
-			console.log('LED ON');
-		} else {
-			// turn off
-			arduino.write(ledOff); //send data to arduino
-			console.log('LED OFF');
-		}
-
-	});
 
 });
 
@@ -78,32 +56,5 @@ arduino.on('open', function() {
 
 
 arduino.on('data', function(data) {
-
-	console.log('Get data from arduino');
-	getData += data;
-
-	if (getData.indexOf('B') >= 0 && getData.indexOf('E') >= 0) {
-
-		sendData = getData.substring(getData.indexOf('B') + 1, getData.indexOf('E'));
-		getData = '';
-		//console.log('Received data='+ getData);
-		console.log(sendData);
-		io.sockets.emit('pot', sendData);
-
-	};
-
-
-
-	getDataButton += data;
-
-	if (getDataButton.indexOf('J') >= 0 && getDataButton.indexOf('K') >= 0) {
-
-		sendDataButton = getDataButton.substring(getDataButton.indexOf('J') + 1, getDataButton.indexOf('K'));
-		getDataButton = '';
-		//console.log('Received data='+ getDataButton);
-		console.log(sendDataButton);
-		io.sockets.emit('ardButton', sendDataButton);
-
-	};
 
 });

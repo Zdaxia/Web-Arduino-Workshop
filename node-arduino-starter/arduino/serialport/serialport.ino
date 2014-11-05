@@ -9,7 +9,7 @@ int prevVal = 0;
 String inputString = "";
 
 //button variables
-int buttonPin= A2;
+int buttonPin=A2;
 int buttonState=0; //var for reading the button statis, this changes
 int prevButton=0;
 

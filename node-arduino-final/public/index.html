@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>button and pot</title>
+
+		<style type="text/css">
+			button { font-size: 1.2em; 
+					 font-weight: 100;
+					 width: 100px; 
+					 height: 100px; 
+					 border-radius: 50%; 
+					 background: white
+					}
+				#ardButton {
+					width: 100px; 
+					height: 100px; 
+					background: blue
+				}
+		</style>
+
+	</head>
+	<body>
+		<h1>Node Arduino Example</h1>
+		<h4>Switching LED</h4>
+		<button id="toggleLED">ON/OFF</button>
+		<h4>Pressing button</h4>
+		<div id="ardButton"> </div>
+		<h4>Receiving potmeter value</h4>
+		<div id="pot" style="display:block; height: 25px; background: red"></div>
+		<!-- change the src number to your computer ip address  http://{YOUR_IP_ADDRESS}}:9001/socket.io/socket.io.js-->
+		<script src="http://149.31.205.105:9001/socket.io/socket.io.js"></script>
+		<script src="http://localhost:9001/socket.io/socket.io.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>		
+		<script>
+			//change the number here to your computer ip address. http://{YOUR_IP_ADDRESS}:9001
+			var hostname = window.location.hostname;
+			console.log(hostname);
+			var socket = io.connect('http://149.31.205.105:9001');
+
+			//led
+			var isOn = false;
+			$('#toggleLED').click(function() {
+				if(isOn == false) {
+					isOn = true;
+					$(this).css({
+						background: 'yellow'
+					});
+					// send signal
+					socket.emit('led', true);
+				} else if(isOn == true) {
+					isOn = false;
+					$(this).css({
+						background: 'white'
+					});
+					// send signal
+					socket.emit('led', false);
+				}
+			});
+
+			//use button linked with arduino to control the web page
+			socket.on('ardButton', function(data){
+				console.log('ardButton value'+ data);
+				
+				if(data==1){
+					$('#ardButton').animate({
+						'height':'50px'
+					},50)
+
+				}else if(data==0){
+					$('#ardButton').animate({
+						'height':'100px'
+					},50)
+
+				}
+
+			});
+
+			//use knob linked with arduino to control the web page
+			socket.on('pot', function(data){
+				console.log('Pot value'+ data);
+				$('#pot').animate({
+					'width':data
+				},50);
+
+			});
+
+			
+
+
+		</script>
+	</body>
+</html>

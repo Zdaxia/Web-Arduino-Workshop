@@ -14,42 +14,21 @@ int buttonState=0; //var for reading the button statis, this changes
 int prevButton=0;
 
 
-void setup()
-{
+void setup(){
   pinMode(ledPin, OUTPUT);
   Serial.begin(9600);
 }
- 
-void loop()
-{
- 
- 
- if(Serial.available()>0){
-   int incomingByte=Serial.read();
-   
-   if(incomingByte==1){
-     digitalWrite(ledPin,1);
-   }else if(incomingByte==0){
-      digitalWrite(ledPin,0);
-   }
- 
- }
- 
- sensorVal=analogRead(potentiometerPin);
- 
-if(prevVal!=sensorVal){
-  Serial.print('B');
-   Serial.print(sensorVal);
-    Serial.print('E');
-    prevVal=sensorVal;
-}
 
-buttonState=digitalRead(buttonPin);
-Serial.print('J');
-Serial.print(buttonState);
-Serial.print('K');
-
+void loop(){
   
+  //Turn on/off led from webpage
+  
+  //Use button control web page
+  
+  //Use potentiometer control web page
+
+
   delay(500);
-  
+
 }
+

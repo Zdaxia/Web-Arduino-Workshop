@@ -28,7 +28,6 @@
 		<h4>Receiving potmeter value</h4>
 		<div id="pot" style="display:block; height: 25px; background: red"></div>
 		<!-- change the src number to your computer ip address  http://{YOUR_IP_ADDRESS}}:9001/socket.io/socket.io.js-->
-		<script src="http://149.31.205.105:9001/socket.io/socket.io.js"></script>
 		<script src="http://localhost:9001/socket.io/socket.io.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>		
 		<script>
@@ -36,9 +35,10 @@
 			// var hostname = window.location.hostname;
 			// console.log(hostname);
 			//change the number here to your computer ip address. http://{YOUR_IP_ADDRESS}:9001
-			var socket = io.connect('http://149.31.205.105:9001');
+			var socket = io.connect('http://localhost:9001');
 
-			//Turn on/off led  
+
+			//Turn on/off led 
 			
 
 			//use button linked with arduino to control the web page

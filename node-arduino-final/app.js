@@ -9,7 +9,7 @@ var express = require('express'),
 	fs = require('fs'),
 	// $ ls /dev/tty.* 
 	// use $ ls /dev/tty.*  to list serial port you are using.
-	sPort = "/dev/tty.usbmodemfa141", //Change this sPort to your using port which your arduino linked with.
+	sPort = "/dev/tty.usbmodemfd131", //Change this sPort to your using port which your arduino linked with.
 	// create an instance (object)
 	arduino = new SerialPort(sPort, {
 		baudrate: 9600

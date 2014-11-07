@@ -50,8 +50,7 @@ var getDataButton,
 	sendDataButton;
 
 arduino.on('open', function() {
-	console.log('port id on');
-
+	console.log('port is on');
 });
 
 

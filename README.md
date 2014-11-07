@@ -31,3 +31,34 @@ If you get something like “1.3.11”, it was successful.<br />
 4. Get your circuit ready (-pic.circuit) and link your arduino to computer.<br />
 ![alt tag](http://devices4inquiry.aisencc.com/wp-content/uploads/sites/6/2014/11/web-ard.png)<br />
 5. Download this repo.
+
+**Play with finished project:**
+  1. Download this repo.
+  2. Connect your Arduino with your computer.
+  3. Open “serialport.ino” in node-arduion-final>arduino>serialport.
+  4. Upload this code to your arduino.
+  5. Open your terminal. 
+  6. Find the usb port arduino is using, type”/dev/tty.usbmodemfd131” in terminal. Save the port you are using. And save it to somewhere.   
+  
+        /dev/tty.usbmodemfd131
+
+  7. Change directory to  "node-arduino-final”. (You can type “cd” in terminal and drag "node-arduino-final” to your terminal )
+  
+        cd node-arduino-final
+
+  8. Install modules
+
+        npm install
+
+  9. Open app.js change the “sPort" to your port which you find in step 6.
+  
+  10. Start the server by runing: 
+  
+        node app.js
+
+  11. Open your browser type:
+  
+        localhost:8888
+
+
+
